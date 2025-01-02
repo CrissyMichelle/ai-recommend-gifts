@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Recommendation App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Gift Recommendation App!</h1>
+        <p>Use the form below to tell us about your loved one.</p>
+        <form method="POST" action="/">
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.age.label }}
+                {{ form.age(class="form-control") }}
+            </div>
+            <div>
+                {{ form.gender.label }}
+                {{ form.gender(class="form-control") }}
+            </div>
+            <div>
+                {{ form.hobby.label }}
+                {{ form.hobby(class="form-control") }}
+            </div>
+            <div>
+                {{ form.budget.label }}
+                {{ form.budget(class="form-control") }}
+            </div>
+            <div>
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+        {% if gifts %}
+            <h2>Here are some gift ideas:</h2>
+            <p>{{ gifts }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -188,14 +188,15 @@ input, select, textarea {
 }
 
 @keyframes slideIn {
-    from {
+    0% {
         transform: translateX(100%);
         opacity: 0;
         visibility: visible;
     }
-    to {
+    100% {
         transform: translateX(0);
         opacity: 1;
+        visibility: visible;
     }
 }
 

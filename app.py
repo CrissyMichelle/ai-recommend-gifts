@@ -45,5 +45,9 @@ def index():
         gifts = query_gpt3(prompt)
     return render_template("index.html", form=form, gifts=gifts)
 
+@app.route("/refresh", methods=["GET"])
+def refresh():
+    return render_template("index.html", form=GiftForm(), gifts=None)
+
 if __name__ == "__main__":
     app.run(debug=True, port=5001)

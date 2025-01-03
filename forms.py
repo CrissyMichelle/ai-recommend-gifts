@@ -23,7 +23,7 @@ class GiftForm(FlaskForm):
         validators=[DataRequired(), Length(max=200)]
     )
     budget = SelectField(
-        'Budget',
+        'Your Budget',
         choices=[
             ('', 'Select one'),
             ('low', 'Thrifty'),

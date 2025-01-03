@@ -44,10 +44,7 @@ jobs:
           --memory 1 \
           --ports 5001 \
           --ip-address Public \
-          --public-ip-address $(az network public-ip show \
-            --resource-group giftrecommender-2025_ai-rg \
-            --name ai-gift-app-ip \
-            --query id --output tsv) \
+          --dns-name-label ai-gift-app \
           --environment-variables OPENAI_API_KEY="${{ secrets.OPENAI_API_KEY }}" \
           --registry-username ${{ secrets.ACR_USERNAME }} \
           --registry-password ${{ secrets.ACR_PASSWORD }}

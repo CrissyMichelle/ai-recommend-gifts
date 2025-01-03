@@ -46,6 +46,7 @@ def format_gifts(gifts):
 def index():
     form = GiftForm()
     gifts = None
+    formatted_gifts = None
     if form.validate_on_submit():
         prompt = (
             f"My loved one is {form.age.data} years old, "

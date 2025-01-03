@@ -23,3 +23,8 @@ jobs:
         az acr login --name ${{ secrets.ACR_NAME }}
         docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/ai-gift-app:latest .
         docker push ${{ secrets.ACR_LOGIN_SERVER }}/ai-gift-app:latest
+
+    - name: Verify Docker Build Content
+      run: |
+        docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/ai-gift-app:latest .
+        docker run --rm ${{ secrets.ACR_LOGIN_SERVER }}/ai-gift-app:latest ls /app

@@ -24,15 +24,17 @@ jobs:
         docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/ai-gift-app:latest .
         docker push ${{ secrets.ACR_LOGIN_SERVER }}/ai-gift-app:latest
 
-    - name: Deploy or Update Azure Container Instance
+    - name: Deploy Azure Container Instance
       run: |
         az container show \
           --resource-group giftrecommender-2025_ai-rg \
           --name ai-gift-app > /dev/null 2>&1 && \
-        az container update \
+        (az container delete \
           --resource-group giftrecommender-2025_ai-rg \
-          --name ai-gift-app \
-          --image ${{ secrets.ACR_LOGIN_SERVER }}/ai-gift-app:latest || \
+          --name ai-gift-app --yes && \
+        echo "Deleted existing container.") || \
+        echo "No container found. Proceeding to create a new one."
+        
         az container create \
           --resource-group giftrecommender-2025_ai-rg \
           --name ai-gift-app \
@@ -41,5 +43,6 @@ jobs:
           --memory 1 \
           --ports 5001 \
           --ip-address Public \
-          --environment-variables OPENAI_API_KEY="${{ secrets.OPENAI_API_KEY }}"
-      
+          --environment-variables OPENAI_API_KEY="${{ secrets.OPENAI_API_KEY }}" \
+          --registry-username ${{ secrets.ACR_USERNAME }} \
+          --registry-password ${{ secrets.ACR_PASSWORD }}

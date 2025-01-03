@@ -19,6 +19,9 @@
             <div>
                 {{ form.gender.label }}
                 {{ form.gender(class="form-control") }}
+                {% if form.gender.errors %}
+                    <small class="text-danger">{{ form.gender.errors[0] }}</small>
+                {% endif %}
             </div>
             <div>
                 {{ form.hobby.label }}

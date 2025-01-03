@@ -10,7 +10,11 @@ class GiftForm(FlaskForm):
     gender = SelectField(
         'Gender',
         choices=[
-            ('female', 'Femme'), ('male', 'Masc'), ('non-binary', 'Non-Binary')
+            ('', 'Select one'),
+            ('gender-fluid', 'Fluid'),
+            ('female', 'Femme'),
+            ('male', 'Masc'),
+            ('non-binary', 'Non-Binary')
         ],
         validators=[DataRequired()]
     )

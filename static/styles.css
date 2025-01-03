@@ -47,3 +47,7 @@ textarea {
 .btn-primary, .btn-secondary {
     margin-right: 10px;
 }
+
+select option[value=""] {
+    color: #6c757d;
+}

@@ -10,7 +10,7 @@
     <div class="container">
         <h1>Welcome to the Gift Recommendation App!</h1>
         <p>Use the form below to tell us about your loved one.</p>
-        <form method="POST" action="/">
+        <form method="POST" action="/" onsubmit="showLoading()">
             {{ form.hidden_tag() }}
             <div class="form-row">
                 <div class="form-group half-width">
@@ -47,6 +47,10 @@
                 <button type="button" class="btn btn-secondary" onclick="window.location.href='/refresh'">Reset</button>
             </div>
         </form>
+        <div id="loading" style="display: none; text-align: center;">
+            <img src="{{ url_for('static', filename='spinner.gif') }}" alt="Loading..." width="50">
+            <p>Please wait while I think up some nifty gift ideas...</p>
+        </div>
         {% if gifts %}
             <div class="recommendations">
                 <h2>Here are some gift ideas:</h2>
@@ -54,5 +58,10 @@
             </div>
         {% endif %}
     </div>
+    <script>
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+    </script>
 </body>
 </html>

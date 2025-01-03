@@ -1,6 +1,8 @@
 FROM python:3.9-slim
 
 WORKDIR /app
+COPY ./static /app/static/
+COPY ./templates /app/templates/
 COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 

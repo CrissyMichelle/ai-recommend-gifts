@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gift Recommendation App</title>
+    <title>Gift Recommendation Bot</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to the Gift Recommendation App!</h1>
-        <p>Use the form below to tell us about your loved one.</p>
+        <h1>Welcome to the Gift Recommendation Bot!</h1>
+        <p>Use the form below to tell me a bit about the one you're thinking of.</p>
         <form method="POST" action="/" onsubmit="showLoading()">
             {{ form.hidden_tag() }}
             <div class="form-row">
@@ -53,8 +53,12 @@
         </div>
         {% if gifts %}
             <div class="recommendations">
-                <h2>Here are some gift ideas:</h2>
-                <p>{{ gifts }}</p>
+                <h2>Here are my recommendations:</h2>
+                <ul class="recommendations-list">
+                    {% for idea in gifts %}
+                    <li class="recommendation-item">{{ idea }}</li>
+                    {% endfor %}
+                </ul>
             </div>
         {% endif %}
     </div>

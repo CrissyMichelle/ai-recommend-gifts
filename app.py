@@ -33,6 +33,15 @@ def query_gpt3(prompt):
         print(f"Error querying GPT: {e}")
         return "I'm sorry, I seem to be having trouble with gift requests atm."
 
+def format_gifts(gifts):
+    formatted_gifts = [
+        line.strip() for line in gifts.split('\n')
+        if line.strip().startswith(
+            ('1.', '2.', '3.', '4.', '5.', '6.', '7.', '8.', '9.', '10.')
+        )
+    ]
+    return formatted_gifts
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     form = GiftForm()
@@ -46,7 +55,8 @@ def index():
             f"Please recommend thoughtful, creative, and unique gift ideas."
         )
         gifts = query_gpt3(prompt)
-    return render_template("index.html", form=form, gifts=gifts)
+        formatted_gifts = format_gifts(gifts)
+    return render_template("index.html", form=form, gifts=formatted_gifts)
 
 @app.route("/refresh", methods=["GET"])
 def refresh():

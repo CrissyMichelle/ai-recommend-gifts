@@ -181,10 +181,12 @@ input, select, textarea {
 }
 
 .recommendations {
-    margin-top: 30px;
-    padding: 15px;
-    background: #e9ecef;
+    margin-top: 20px;
+    padding: 25px;
+    background: #f9f9f9;
     border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0
 }
 
 @keyframes slideIn {
@@ -233,4 +235,40 @@ label [for="budget"] {
     margin-top: 20px;
     color: #555;
     font-size: 16px;
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.recommendation-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recommendation-item {
+    background: #fff;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    border: 1px solid #ddd;
+}
+
+.recommendation-item:last-child {
+    margin-bottom: 0;
+}
+
+.recommendation-item:hover {
+    background: #f0f0f0;
+    cursor: pointer;
 }

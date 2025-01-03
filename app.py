@@ -1,4 +1,5 @@
 import os
+import logging
 from openai import AzureOpenAI
 from dotenv import load_dotenv
 from flask import Flask, render_template, request
@@ -8,6 +9,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'red-jellyfish-night'
 
 load_dotenv()
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 client = AzureOpenAI(
     azure_endpoint="https://ai-giftrecommender2025ai060225318907.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview",
@@ -50,4 +53,5 @@ def refresh():
     return render_template("index.html", form=GiftForm(), gifts=None)
 
 if __name__ == "__main__":
+    logger.debug("Starting the Flask app...")
     app.run(host="0.0.0.0", port=5001)

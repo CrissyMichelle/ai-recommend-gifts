@@ -12,33 +12,44 @@
         <p>Use the form below to tell us about your loved one.</p>
         <form method="POST" action="/">
             {{ form.hidden_tag() }}
-            <div>
-                {{ form.age.label }}
-                {{ form.age(class="form-control") }}
-            </div>
-            <div>
-                {{ form.gender.label }}
-                {{ form.gender(class="form-control") }}
-                {% if form.gender.errors %}
-                    <small class="text-danger">{{ form.gender.errors[0] }}</small>
+            <div class="form-group">
+                <label for="age">{{ form.age.label }}</label>
+                {{ form.age(id="age", class="form-control") }}
+                {% if form.age.errors %}
+                    <small class="error-message">{{ form.age.errors[0] }}</small>
                 {% endif %}
             </div>
-            <div>
-                {{ form.hobby.label }}
-                {{ form.hobby(class="form-control") }}
+            <div class="form-group">
+                <label for="gender">{{ form.gender.label }}</label>
+                {{ form.gender(id="gender", class="form-control") }}
+                {% if form.gender.errors %}
+                    <small class="error-message">{{ form.gender.errors[0] }}</small>
+                {% endif %}
             </div>
-            <div>
-                {{ form.budget.label }}
-                {{ form.budget(class="form-control") }}
+            <div class="form-group">
+                <label for="hobby">{{ form.hobby.label }}</label>
+                {{ form.hobby(id="hobby", class="form-control") }}
+                {% if form.hobby.errors %}
+                    <small class="error-message">{{ form.hobby.errors[0] }}</small>
+                {% endif %}
             </div>
-            <div>
+            <div class="form-group">
+                <label for="budget">{{ form.budget.label }}</label>
+                {{ form.budget(id="budget", class="form-control") }}
+                {% if form.budget.errors %}
+                    <small class="error-message">{{ form.budget.errors[0] }}</small>
+                {% endif %}
+            </div>
+            <div class="button-group">
                 {{ form.submit(class="btn btn-primary") }}
-                <button type="reset" class="btn btn-secondary" onclick="window.location.href='/refresh'">Reset</button>
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='/refresh'">Reset</button>
             </div>
         </form>
         {% if gifts %}
-            <h2>Here are some gift ideas:</h2>
-            <p>{{ gifts }}</p>
+            <div class="recommendations">
+                <h2>Here are some gift ideas:</h2>
+                <p>{{ gifts }}</p>
+            </div>
         {% endif %}
     </div>
 </body>

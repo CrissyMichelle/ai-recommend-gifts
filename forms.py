@@ -24,7 +24,12 @@ class GiftForm(FlaskForm):
     )
     budget = SelectField(
         'Budget',
-        choices=[('low', 'Thrifty'), ('medium', 'Mid'), ('high', 'Opulent')],
+        choices=[
+            ('', 'Select one'),
+            ('low', 'Thrifty'),
+            ('medium', 'Mid'),
+            ('high', 'Opulent')
+        ],
         validators=[DataRequired()]
     )
     submit = SubmitField('Get Gift Recommendations!')

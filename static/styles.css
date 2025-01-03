@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap');
+
 textarea {
     width: 100%;
     height: 100px;
@@ -53,25 +55,40 @@ select option[value=""] {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f9f9f9;
+    font-family: 'Roboto', sans-serif;
+    background: url('../static/giftpic.jpg') repeat center center fixed;
+    background-size: cover;
     color: #333;
     margin: 0;
     padding: 20px;
 }
 
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
 .container {
     max-width: 600px;
     margin: auto;
-    background: #fff;
+    background: rgb(243, 237, 237);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: slideIn 1s ease-in-out 0.5s;
+    animation-fill-mode: forwards;
 }
 
 h1 {
     text-align: center;
     color: #007bff;
+    font-family: 'Playfair Display', serif;
 }
 
 p {
@@ -87,6 +104,7 @@ label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
+    color: #3c3c3c;
 }
 
 input, select, textarea {
@@ -114,4 +132,15 @@ input, select, textarea {
     padding: 15px;
     background: #e9ecef;
     border-radius: 10px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }

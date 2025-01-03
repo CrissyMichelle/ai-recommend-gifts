@@ -10,7 +10,11 @@ class GiftForm(FlaskForm):
     gender = SelectField(
         'Gender',
         choices=[
-            ('female', 'Femme'), ('male', 'Masc'), ('non-binary', 'Non-Binary')
+            ('', 'Select one'),
+            ('gender-fluid', 'Fluid'),
+            ('female', 'Femme'),
+            ('male', 'Masc'),
+            ('non-binary', 'Non-Binary')
         ],
         validators=[DataRequired()]
     )
@@ -19,8 +23,13 @@ class GiftForm(FlaskForm):
         validators=[DataRequired(), Length(max=200)]
     )
     budget = SelectField(
-        'Budget',
-        choices=[('low', 'Thrifty'), ('medium', 'Mid'), ('high', 'Opulent')],
+        'Your Budget',
+        choices=[
+            ('', 'Select one'),
+            ('low', 'Thrifty'),
+            ('medium', 'Mid'),
+            ('high', 'Opulent')
+        ],
         validators=[DataRequired()]
     )
     submit = SubmitField('Get Gift Recommendations!')

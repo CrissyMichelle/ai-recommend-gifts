@@ -1,5 +1,59 @@
-textarea {
-    width: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap');
+
+/* Global Box-Sizing Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+@media (max-width: 768px) {
+    #gender {
+        width: 100% !important;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 10px; /* Add controlled spacing between fields */
+        padding-right: 0; /* Reset unnecessary padding */
+    }
+
+    .half-width {
+        flex: none;
+        width: 100%; /* Ensure full width for child elements */
+        margin: 0; /* Reset margins */
+    }
+
+    /* Target Gender Select Dropdown */
+    .form-group.half-width select[name="gender"] {
+        width: 100%; /* Match parent width */
+        margin-right: 0; /* Reset unwanted margin */
+        padding: 10px; /* Consistent padding */
+        font-size: 14px; /* Match other input fields */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box; /* Ensure consistent box-sizing */
+    }
+
+    /* Budget Label and Dropdown */
+    label[for="budget"] {
+        display: block; /* Ensure it sits properly above the dropdown */
+        padding-left: 0 !important; /* Remove unnecessary padding */
+    }
+
+    #budget {
+        width: 100%; /* Match parent container */
+        padding: 10px; /* Add consistent padding */
+        margin: 0 auto !important; /* Center the dropdown horizontally */
+        box-sizing: border-box;
+    }
+}
+
+
+#hobby {
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: block;
     height: 100px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -46,4 +100,128 @@ textarea {
 
 .btn-primary, .btn-secondary {
     margin-right: 10px;
+}
+
+select option[value=""] {
+    color: #6c757d;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: url('../static/giftpic.jpg') repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: rgb(243, 237, 237);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: slideIn 1s ease-in-out 0.5s;
+    animation-fill-mode: forwards;
+}
+
+h1 {
+    text-align: center;
+    color: #007bff;
+    font-family: 'Playfair Display', serif;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #3c3c3c;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.error-message {
+    color: #dc3543;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.recommendations {
+    margin-top: 30px;
+    padding: 15px;
+    background: #e9ecef;
+    border-radius: 10px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.half-width {
+    flex: .5;
+}
+
+#age {
+    width: 50px;
+}
+
+#gender {
+    width: 310px;
+}
+
+#budget {
+    width: 210px;
+    margin-left: 100px;
+}
+
+label [for="budget"] {
+    padding-left: 100px;
 }
